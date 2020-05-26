@@ -23,9 +23,8 @@ final task=Task(name: newtasktitle);
      }catch(e){
        
      }   // we cant update the values without this function as it auto rebuild again the widgets who are listening
-                        // to this property according to it's updated value.
+                   // to this property according to it's updated value.
 }
-
  void  getdata() async{
    List<Task> task=[];
     QuerySnapshot document=await Firestore.instance.collection('tasks').getDocuments();
