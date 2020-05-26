@@ -40,6 +40,7 @@ int  getlength(){
 return _tasks.length;
 }
  UnmodifiableListView<Task> get tasks {
+   getdata();
   return UnmodifiableListView(_tasks);
 }
 void updateTask(Task task){
