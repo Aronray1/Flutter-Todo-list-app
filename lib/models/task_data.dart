@@ -39,7 +39,7 @@ if(!snapshot.hasData){
 
 }
 final tasks = snapshot.data.documents;
-
+length=tasks.length;
 for( var task in tasks){
   _tasks.add(task.data['title']);
 
@@ -51,7 +51,7 @@ return null;
 }
 
 int  getlength(){
-return _tasks.length;
+return length;
 }
  UnmodifiableListView<Task> get tasks {
   return UnmodifiableListView(_tasks);
