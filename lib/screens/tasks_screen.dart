@@ -13,8 +13,9 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
+    Taskdata().getdata();
     
   }
   Widget build(BuildContext context) {
