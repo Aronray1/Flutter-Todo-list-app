@@ -60,10 +60,7 @@ style: TextStyle(
 color: Colors.white,
 fontSize: 50.0,
 fontWeight: FontWeight.w700,
-
-
 ),
-
 ),
 
 Text(
@@ -77,10 +74,8 @@ fontSize:18.0
 ),
 ]
 
-)
-            
+)          
   ),
-
           Expanded(
   child:   Container(
     padding: EdgeInsets.symmetric(horizontal: 20.0),
