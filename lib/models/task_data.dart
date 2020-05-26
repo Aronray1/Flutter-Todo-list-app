@@ -25,7 +25,7 @@ final task=Task(name: newtasktitle);
      }   // we cant update the values without this function as it auto rebuild again the widgets who are listening
                    // to this property according to it's updated value.
 }
-Widget getdata(){
+void getdata(){
   StreamBuilder<QuerySnapshot>(
       stream: _firestore.collection('tasks').snapshots(),
       builder:(context,snapshot){
@@ -47,7 +47,7 @@ for( var task in tasks){
 return null;
     },);
 
-    return null;
+   
 }
 
 int  getlength(){
