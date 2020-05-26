@@ -1,10 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:todo/screens/add_task.dart';
 import 'package:todo/widgets/tasks_list.dart';
 //import 'package:provider/provider.dart';
 import 'package:todo/models/task_data.dart';
-final _firestore = Firestore.instance;
 int length=Taskdata().getlength();
 class TasksScreen extends StatefulWidget {
 

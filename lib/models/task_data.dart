@@ -4,7 +4,6 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 final _firestore = Firestore.instance;
-var listtask;
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
 
@@ -41,7 +40,8 @@ if(!snapshot.hasData){
 final tasks = snapshot.data.documents;
 
 for( var task in tasks){
-  
+  _tasks.add(task.data['title']);
+
 }
 return null;
     },);
