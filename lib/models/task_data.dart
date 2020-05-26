@@ -42,6 +42,7 @@ final tasks = snapshot.data.documents;
 length=tasks.length;
 for( var task in tasks){
   _tasks.add(task.data['title']);
+  print(_tasks);
 
 }
 return null;
