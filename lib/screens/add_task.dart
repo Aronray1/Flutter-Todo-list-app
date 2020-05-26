@@ -22,7 +22,6 @@ class _AddtaskscreenState extends State<Addtaskscreen> {
     borderRadius: BorderRadius.only(
     topLeft:Radius.circular(20.0),
     topRight: Radius.circular(20.0)
-  
   )
 
    ),
