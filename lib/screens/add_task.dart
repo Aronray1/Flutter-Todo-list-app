@@ -34,7 +34,6 @@ style:TextStyle(
 fontSize: 30.0,
 color:Colors.teal[400],
 )
-
 ),
 
 TextField(    // auto enable the text fieldps when the bottom sheet pops up.
