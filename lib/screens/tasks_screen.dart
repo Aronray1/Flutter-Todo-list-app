@@ -16,12 +16,7 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   void initState(){
     super.initState();
-    StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('messages').orderBy('timestamp').snapshots(),
-      builder:(context,snapshot){
-if()
-    },);
-  
+    
   }
   Widget build(BuildContext context) {
     return Scaffold(
