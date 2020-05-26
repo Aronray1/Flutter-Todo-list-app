@@ -27,7 +27,6 @@ class _AddtaskscreenState extends State<Addtaskscreen> {
    ),
 child: Column(
   crossAxisAlignment: CrossAxisAlignment.stretch,
-
   children: <Widget>[
 Text('Add Task',
 textAlign: TextAlign.center,
