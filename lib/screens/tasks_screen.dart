@@ -26,8 +26,6 @@ class _TasksScreenState extends State<TasksScreen> {
         padding: EdgeInsets.only(bottom:MediaQuery.of(context).viewInsets.bottom),// making keyboard to appear just below the add button.
         
         child: Addtaskscreen(
-
-
         ))
 
       )
