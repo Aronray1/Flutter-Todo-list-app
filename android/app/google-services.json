@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "396066098527",
+    "firebase_url": "https://todo-985fb.firebaseio.com",
+    "project_id": "todo-985fb",
+    "storage_bucket": "todo-985fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396066098527:android:b1ed01d145a561c2bcbaea",
+        "android_client_info": {
+          "package_name": "com.kartik.todo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396066098527-qlh8j959bbfdcq3qlr1t1n6ui2lha3rl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkNUmsoK5kppJ2uaGb335sLSDmsl_qqkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396066098527-qlh8j959bbfdcq3qlr1t1n6ui2lha3rl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
