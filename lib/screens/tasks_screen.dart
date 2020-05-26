@@ -3,6 +3,8 @@ import 'package:todo/screens/add_task.dart';
 import 'package:todo/widgets/tasks_list.dart';
 //import 'package:provider/provider.dart';
 import 'package:todo/models/task_data.dart';
+
+int length=Taskdata().getlength();
 class TasksScreen extends StatefulWidget {
 
   @override
@@ -64,7 +66,7 @@ fontWeight: FontWeight.w700,
 ),
 
 Text(
-  '${Taskdata().getlength} Tasks',
+  '$length Tasks',
 
   style:TextStyle(
 color:Colors.white,
