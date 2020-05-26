@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:todo/models/task.dart';
 import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+final _firestore = Firestore.instance;
 var listtask;
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
@@ -16,6 +16,9 @@ void addtask(String newtasktitle){
   try{
 
   final task=Task(name: newtasktitle);
+  _firestore.collection('tasks').add({
+'title':task,
+  });
   _tasks.add(task);
   notifyListeners();
      }catch(e){
@@ -29,7 +32,7 @@ void addtask(String newtasktitle){
     QuerySnapshot document=await Firestore.instance.collection('tasks').getDocuments();
 for(var f in document.documents){ 
 
-  task.add(Task(name:f.data['title']));
+  task.add(f.data['title']);
 }
 _tasks=task;
 }

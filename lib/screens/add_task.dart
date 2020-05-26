@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 //import 'package:todo/models/task.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/models/task_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-final _firestore = Firestore.instance;
 class Addtaskscreen extends StatefulWidget {
   @override
   _AddtaskscreenState createState() => _AddtaskscreenState();
@@ -78,11 +76,6 @@ setState(() {
   _text.text.isEmpty?_validate=true:_validate=false;
 });
 if(_validate==false){
-  _firestore.collection('tasks').add({
-'title':newTasktitle,
-
-
-  });
 Provider.of<Taskdata>(context).addtask(newTasktitle);
 Navigator.pop(context);
 }
