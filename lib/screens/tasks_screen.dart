@@ -64,7 +64,7 @@ fontWeight: FontWeight.w700,
 ),
 
 Text(
-  '${Provider.of<Taskdata>(context).taskcount} Tasks',
+  '${Taskdata().getlength} Tasks',
 
   style:TextStyle(
 color:Colors.white,

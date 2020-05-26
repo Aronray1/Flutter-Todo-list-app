@@ -36,6 +36,9 @@ for(var f in document.documents){
 }
 _tasks=task;
 }
+int  getlength(){
+return _tasks.length;
+}
  UnmodifiableListView<Task> get tasks {
   return UnmodifiableListView(_tasks);
 }
