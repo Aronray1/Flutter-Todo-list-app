@@ -14,8 +14,7 @@ int get taskcount{
 
 void addtask(String newtasktitle){
   try{
-
-  final task=Task(name: newtasktitle);
+final task=Task(name: newtasktitle);
   _firestore.collection('tasks').add({
 'title':task,
   });
