@@ -22,7 +22,6 @@ final task=Task(name: newtasktitle);
   _tasks.add(task);
   notifyListeners();
      }catch(e){
-       
      }   // we cant update the values without this function as it auto rebuild again the widgets who are listening
                    // to this property according to it's updated value.
 }
