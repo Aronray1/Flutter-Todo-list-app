@@ -33,8 +33,6 @@ textAlign: TextAlign.center,
 style:TextStyle(
 fontSize: 30.0,
 color:Colors.teal[400],
-
-
 )
 
 ),
