@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:todo/screens/add_task.dart';
 import 'package:todo/widgets/tasks_list.dart';
 //import 'package:provider/provider.dart';
-//import 'package:todo/models/task_data.dart';
- int length;
- 
+import 'package:todo/models/task_data.dart';
+var length=Taskdata().taskcount;
 class TasksScreen extends StatefulWidget {
 
   @override
@@ -16,7 +15,7 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   void initState() {
     super.initState();
-
+    
   }
   Widget build(BuildContext context) {
     return Scaffold(
