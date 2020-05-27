@@ -4,6 +4,8 @@ import 'package:todo/screens/add_task.dart';
 import 'package:todo/widgets/tasks_list.dart';
 //import 'package:provider/provider.dart';
 import 'package:todo/models/task_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+final _firestore=Firestore.instance;
  int length;
 class TasksScreen extends StatefulWidget {
 
@@ -15,7 +17,7 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   void initState() {
     super.initState();
-    Taskdata().addtask('numerous');
+    
   }
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,3 +104,33 @@ fontSize:18.0
 }
 
 
+class Mstream extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+ stream:_firestore.collection('tasks').snapshots(),
+
+      builder: (context,snapshot){
+if(!snapshot.hasData){
+  return Center(
+    child:CircularProgressIndicator(
+      backgroundColor: Colors.lightBlueAccent,
+    )
+  );
+}
+
+final tasks=snapshot.data.documents;
+for(var task in tasks){
+  print('hello i am here');
+  Taskdata().addtask(task.data['title']);
+}
+
+return null;
+
+
+      }
+      
+      
+      );
+  }
+}
