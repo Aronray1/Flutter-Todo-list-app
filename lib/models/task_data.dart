@@ -4,6 +4,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 final _firestore = Firestore.instance;
+List<String> data=[];
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
 
@@ -15,20 +16,24 @@ int get taskcount{
 
 void addtask(String newtasktitle){
   try{
-final task=Task(name: newtasktitle);
+    data.add(newtasktitle);
   _firestore.collection('tasks').add({
 'title':newtasktitle,
   });
-  _tasks.add(task);
-  notifyListeners();
+  for(var i in data){
+    _tasks.add(Task(name:i));
+    notifyListeners();
+      }
+  
      }catch(e){
      }   // we cant update the values without this function as it auto rebuild again the widgets who are listening
                    // to this property according to it's updated value.
 }
 void getdata(){
+  
   _firestore.collection("tasks").getDocuments().then((querySnapshot) {
     querySnapshot.documents.forEach((result) {
-      _tasks.add(Task(name:result.data['title']));
+      data.add(result.data['title']);
     });
 
     
