@@ -30,6 +30,8 @@ void getdata(){
     querySnapshot.documents.forEach((result) {
       _tasks.add(Task(name:result.data['title']));
     });
+
+    
   });
    
 }
@@ -38,7 +40,7 @@ int  getlength(){
 return length;
 }
  UnmodifiableListView<Task> get tasks {
-   
+   getdata();
   return UnmodifiableListView(_tasks);
 }
 void updateTask(Task task){
