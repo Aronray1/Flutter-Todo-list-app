@@ -15,8 +15,12 @@ int get taskcount{
 }
 
 void addtask(String newtasktitle){
-  try{
+  if(newtasktitle!=null){
     data.add(newtasktitle);
+  }
+  
+  try{
+    
   _firestore.collection('tasks').add({
 'title':newtasktitle,
   });
