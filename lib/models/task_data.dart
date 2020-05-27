@@ -10,15 +10,12 @@ class Taskdata extends ChangeNotifier {
 
   ];
   int length;
-int get taskcount{
-  return _tasks.length;
-}
 
-void addtask(String newtasktitle){
-  if(newtasktitle!=null){
-    data.add(newtasktitle);
-  }
+
+void addtask(String newtasktitle) async{
   
+  var data=await getdata();
+  data.add(newtasktitle);
   try{
     
   _firestore.collection('tasks').add({
@@ -33,21 +30,21 @@ void addtask(String newtasktitle){
      }   // we cant update the values without this function as it auto rebuild again the widgets who are listening
                    // to this property according to it's updated value.
 }
-void getdata(){
+Future getdata() async{
   
-  _firestore.collection("tasks").getDocuments().then((querySnapshot) {
+  await _firestore.collection("tasks").getDocuments().then((querySnapshot) {
     querySnapshot.documents.forEach((result) {
-      data.add(result.data['title']);
+       data.add(result.data['title']);
     });
 
-    
   });
-   
+  
+   return data;
+}
+int get taskcount{
+  return _tasks.length;
 }
 
-int  getlength(){
-return length;
-}
  UnmodifiableListView<Task> get tasks {
    getdata();
   return UnmodifiableListView(_tasks);

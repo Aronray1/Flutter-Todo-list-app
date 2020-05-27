@@ -4,7 +4,7 @@ import 'package:todo/screens/add_task.dart';
 import 'package:todo/widgets/tasks_list.dart';
 //import 'package:provider/provider.dart';
 import 'package:todo/models/task_data.dart';
-int length=Taskdata().getlength();
+ int length;
 class TasksScreen extends StatefulWidget {
 
   @override
@@ -13,10 +13,10 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
   @override
-  void initState() {
+  void initState() async{
     super.initState();
-    Taskdata().getdata();
-    
+    var k=await Taskdata().getdata();
+    length=k.length;
   }
   Widget build(BuildContext context) {
     return Scaffold(
