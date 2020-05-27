@@ -26,27 +26,11 @@ final task=Task(name: newtasktitle);
                    // to this property according to it's updated value.
 }
 void getdata(){
-  StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('tasks').snapshots(),
-      builder:(context,snapshot){
-if(!snapshot.hasData){
-  return Center(
-            child: CircularProgressIndicator(
-              backgroundColor: Colors.lightBlueAccent,
-            )
-  );
-
-}
-final tasks = snapshot.data.documents;
-length=tasks.length;
-for( var task in tasks){
-  _tasks.add(Task(name:task.data['title']));
-  print(_tasks);
-
-}
-return null;
-    },);
-
+  _firestore.collection("tasks").getDocuments().then((querySnapshot) {
+    querySnapshot.documents.forEach((result) {
+      print(result.data);
+    });
+  });
    
 }
 
@@ -54,6 +38,7 @@ int  getlength(){
 return length;
 }
  UnmodifiableListView<Task> get tasks {
+   
   return UnmodifiableListView(_tasks);
 }
 void updateTask(Task task){
