@@ -17,7 +17,7 @@ void addtask(String newtasktitle){
   try{
 final task=Task(name: newtasktitle);
   _firestore.collection('tasks').add({
-'title':task,
+'title':newtasktitle,
   });
   _tasks.add(task);
   notifyListeners();
@@ -40,7 +40,7 @@ if(!snapshot.hasData){
 final tasks = snapshot.data.documents;
 length=tasks.length;
 for( var task in tasks){
-  _tasks.add(task.data['title']);
+  _tasks.add(Task(name:task.data['title']));
   print(_tasks);
 
 }
