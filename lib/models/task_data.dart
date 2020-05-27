@@ -28,7 +28,7 @@ final task=Task(name: newtasktitle);
 void getdata(){
   _firestore.collection("tasks").getDocuments().then((querySnapshot) {
     querySnapshot.documents.forEach((result) {
-      print(result.data);
+      _tasks.add(Task(name:result.data['title']));
     });
   });
    
