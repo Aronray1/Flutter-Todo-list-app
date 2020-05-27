@@ -13,10 +13,9 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
   @override
-  void initState() async{
+  void initState() {
     super.initState();
-    var k=await Taskdata().getdata();
-    length=k.length;
+    Taskdata().addtask('numerous');
   }
   Widget build(BuildContext context) {
     return Scaffold(

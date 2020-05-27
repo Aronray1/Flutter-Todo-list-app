@@ -13,7 +13,7 @@ class Taskdata extends ChangeNotifier {
 
 
 void addtask(String newtasktitle) async{
-  
+  getdata();
   var data=await getdata();
   data.add(newtasktitle);
   try{
@@ -24,8 +24,7 @@ void addtask(String newtasktitle) async{
   for(var i in data){
     _tasks.add(Task(name:i));
     notifyListeners();
-      }
-  
+      }      
      }catch(e){
      }   // we cant update the values without this function as it auto rebuild again the widgets who are listening
                    // to this property according to it's updated value.
@@ -41,6 +40,7 @@ Future getdata() async{
   
    return data;
 }
+
 int get taskcount{
   return _tasks.length;
 }
