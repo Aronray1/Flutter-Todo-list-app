@@ -64,12 +64,12 @@ onChanged: (newtext){
     height:10.0
   ),
 
-  FlatButton(onPressed: () async{
+  FlatButton(onPressed: () {
 setState(() {
   _text.text.isEmpty?_validate=true:_validate=false;
 });
 if(_validate==false){
-  await _firestore.collection("tasks")
+   _firestore.collection("tasks")
       .add({
         'title': newTasktitle,
       });
