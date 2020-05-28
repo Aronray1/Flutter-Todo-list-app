@@ -11,7 +11,7 @@ class TaskList extends StatelessWidget {
     
   final brews=Provider.of<QuerySnapshot>(context);
   for(var doc in brews.documents){
-    Taskdata().addtask(doc.data['title']);
+    Provider.of<Taskdata>(context).addtask(doc.data['title']);
   
   }
 
