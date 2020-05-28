@@ -13,6 +13,7 @@ class TaskList extends StatelessWidget {
   
     return Consumer<Taskdata>(
       builder: (context,taskdata,child){
+        
         return  ListView.builder(itemBuilder: (context,index){
           
                return TaskTile(taskTitle:taskdata.tasks[index].name ,ischecked:taskdata.tasks[index].isDone,
@@ -28,8 +29,6 @@ taskdata.deletetask(taskdata.tasks[index]);
 Scaffold.of(context).showSnackBar(
 SnackBar(content: Text('Deleted one task'))
 );
-
-
 
     },
                );
