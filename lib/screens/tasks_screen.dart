@@ -2,35 +2,38 @@
 import 'package:flutter/material.dart';
 import 'package:todo/screens/add_task.dart';
 import 'package:todo/widgets/tasks_list.dart';
-//import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 import 'package:todo/models/task_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TasksScreen extends StatelessWidget {
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.teal[400],
-      floatingActionButton: FloatingActionButton(onPressed: (){
-    showModalBottomSheet(context: context, 
-    isScrollControlled: true,
-    builder: (context)=> SingleChildScrollView(
-      child: Container(
-        padding: EdgeInsets.only(bottom:MediaQuery.of(context).viewInsets.bottom),// making keyboard to appear just below the add button.
-        
-        child: Addtaskscreen(
-        ))
+    return StreamProvider<QuerySnapshot>.value(
+         value:Taskdata().brews,
+          child: Scaffold(
+        backgroundColor: Colors.teal[400],
+        floatingActionButton: FloatingActionButton(onPressed: (){
+      showModalBottomSheet(context: context, 
+      isScrollControlled: true,
+      builder: (context)=> SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(bottom:MediaQuery.of(context).viewInsets.bottom),// making keyboard to appear just below the add button.
+          
+          child: Addtaskscreen(
+          ))
 
-      )
-      
-      );
-      },
-      backgroundColor:Colors.teal[400] ,
-      child:Icon(Icons.add)
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
+        )
+        
+        );
+        },
+        backgroundColor:Colors.teal[400] ,
+        child:Icon(Icons.add)
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
 padding: EdgeInsets.only(top:60.0, left:30.0, right: 30.0, bottom:30.0 ),
 child:Column(
 crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,24 +71,25 @@ fontSize:18.0
 
 )          
   ),
-          Expanded(
+            Expanded(
   child:   Container(
-    padding: EdgeInsets.symmetric(horizontal: 20.0),
-    decoration:BoxDecoration(color:Colors.white,
-    borderRadius: BorderRadius.only(
-    topLeft: Radius.circular(20.0),
-    topRight: Radius.circular(20.0),
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      decoration:BoxDecoration(color:Colors.white,
+      borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(20.0),
+      topRight: Radius.circular(20.0),
   
-    )
+      )
   
-     ),
+       ),
   
-    child:TaskList()
+      child:TaskList()
   
   ),
 ),
 
-        ],
+          ],
+        ),
       ),
     );
   }
