@@ -18,9 +18,29 @@ class _TasksScreenState extends State<TasksScreen> {
     super.initState();
     
   }
-  var length=Taskdata().length;
+  bool len=false;
+ var k;
 
+  int showlength(){
+    
+    var length=Taskdata().taskcount;
+    setState(() {
+if(length==null){
+  length=0;
+
+}
+else{
+len=true;
+}
+    });
+    return length;
+ 
+  }
+  
+ 
+  
   Widget build(BuildContext context) {
+    k=showlength();
     return Scaffold(
       backgroundColor: Colors.teal[400],
       floatingActionButton: FloatingActionButton(onPressed: (){
@@ -32,10 +52,11 @@ class _TasksScreenState extends State<TasksScreen> {
         
         child: Addtaskscreen(
         ))
-
+        
       )
       
       );
+      
       },
       backgroundColor:Colors.teal[400] ,
       child:Icon(Icons.add)
@@ -68,8 +89,9 @@ fontWeight: FontWeight.w700,
 ),
 ),
 
+
 Text(
-  '$length Tasks',
+  '$k Tasks',
 
   style:TextStyle(
 color:Colors.white,

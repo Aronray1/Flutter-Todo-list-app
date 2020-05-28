@@ -14,10 +14,8 @@ class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
 
   ];
- int length;
-int get taskcount{
-  return _tasks.length;
-}
+ 
+
 
 
 void addtask(String newtasktitle) async{
@@ -35,17 +33,21 @@ dblist=doc.data['list'];
       
   }
   
+  
   dblist=doc.data['list'];
-  length=dblist.length;
-  notifyListeners();
   for(var i in dblist){
+    if(_tasks.contains(i)==false){
     _tasks.add(Task(name:i.toString()));
     notifyListeners();
+    }
   }
   
       }catch(e){
      }   // we cant update the values without this function as it auto rebuild again the widgets who are listening
                    // to this property according to it's updated value.
+}
+int get taskcount{
+  return _tasks.length;
 }
 
  UnmodifiableListView<Task> get tasks {
@@ -61,10 +63,11 @@ void updateTask(Task task){
 
 void deletetask(Task task){
   _tasks.remove(task);
+   notifyListeners();
   taskref.updateData({
     'list':FieldValue.arrayRemove([task.name]),
     });
-  notifyListeners();
+ 
 }
 
 }
