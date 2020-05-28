@@ -8,6 +8,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 final  taskref =Firestore.instance.collection('tasks').document('list');
 bool check =false;
+  List dblist;
+
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
 
@@ -16,14 +18,15 @@ class Taskdata extends ChangeNotifier {
 int get taskcount{
   return _tasks.length;
 }
+void getdata() async{
+DocumentSnapshot doc=await taskref.get();
+dblist=doc.data['list'];
+}
 
-void addtask(String newtasktitle) async{
+void addtask(String newtasktitle){
   try{
-    
-final task=Task(name: newtasktitle);
-  _tasks.add(task);
-  DocumentSnapshot doc=await taskref.get();
-  List dblist=doc.data['list'];
+     getdata();
+  
   if(dblist.contains(newtasktitle)==false){
       taskref.updateData(
 {
@@ -31,19 +34,29 @@ final task=Task(name: newtasktitle);
 }
 
       );
+      getdata();
   }
-
-  notifyListeners();
-     }catch(e){
+  
+      }catch(e){
      }   // we cant update the values without this function as it auto rebuild again the widgets who are listening
                    // to this property according to it's updated value.
 }
-void storedata(){
+
+void showdata()
+{
+   
+   var len=dblist.length;
+   for(var i=0;i<len;i++){
+        _tasks.add(Task(name:dblist[i]));
+        notifyListeners();
+   }
+ 
 
 }
 
  UnmodifiableListView<Task> get tasks {
-   
+   getdata();
+   showdata();
   return UnmodifiableListView(_tasks);
 }
 
