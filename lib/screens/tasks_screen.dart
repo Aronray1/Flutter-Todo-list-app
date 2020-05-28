@@ -6,7 +6,19 @@ import 'package:todo/widgets/tasks_list.dart';
 import 'package:todo/models/task_data.dart';
 
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
+
+  @override
+  _TasksScreenState createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  @override
+  void initState(){
+    super.initState();
+    
+  }
+  var length=Taskdata().length;
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +69,7 @@ fontWeight: FontWeight.w700,
 ),
 
 Text(
-  '${Taskdata().taskcount} Tasks',
+  '$length Tasks',
 
   style:TextStyle(
 color:Colors.white,

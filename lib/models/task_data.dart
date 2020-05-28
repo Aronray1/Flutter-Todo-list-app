@@ -14,18 +14,16 @@ class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
 
   ];
- 
+ int length;
 int get taskcount{
   return _tasks.length;
 }
-void getdata() async{
-DocumentSnapshot doc=await taskref.get();
-dblist=doc.data['list'];
-}
 
-void addtask(String newtasktitle){
+
+void addtask(String newtasktitle) async{
   try{
-     getdata();
+    DocumentSnapshot doc=await taskref.get();
+dblist=doc.data['list'];
   
   if(dblist.contains(newtasktitle)==false){
       taskref.updateData(
@@ -34,7 +32,15 @@ void addtask(String newtasktitle){
 }
 
       );
-      getdata();
+      
+  }
+  
+  dblist=doc.data['list'];
+  length=dblist.length;
+  notifyListeners();
+  for(var i in dblist){
+    _tasks.add(Task(name:i.toString()));
+    notifyListeners();
   }
   
       }catch(e){
@@ -42,21 +48,7 @@ void addtask(String newtasktitle){
                    // to this property according to it's updated value.
 }
 
-void showdata()
-{
-   
-   var len=dblist.length;
-   for(var i=0;i<len;i++){
-        _tasks.add(Task(name:dblist[i]));
-        notifyListeners();
-   }
- 
-
-}
-
  UnmodifiableListView<Task> get tasks {
-   getdata();
-   showdata();
   return UnmodifiableListView(_tasks);
 }
 
@@ -69,6 +61,9 @@ void updateTask(Task task){
 
 void deletetask(Task task){
   _tasks.remove(task);
+  taskref.updateData({
+    'list':FieldValue.arrayRemove([task.name]),
+    });
   notifyListeners();
 }
 
