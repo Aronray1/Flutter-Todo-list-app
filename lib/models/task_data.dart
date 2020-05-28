@@ -9,15 +9,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 final  taskref =Firestore.instance.collection('tasks').document('list');
 bool check =false;
   List dblist;
-
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
 
   ];
  
-
-
-
 void addtask(String newtasktitle) async{
   try{
     DocumentSnapshot doc=await taskref.get();
@@ -32,14 +28,17 @@ dblist=doc.data['list'];
       );
       
   }
-  
-  
-  dblist=doc.data['list'];
+  if(check==false){
   for(var i in dblist){
-    if(_tasks.contains(i)==false){
+    if(_tasks.contains(Task(name:i))==false){
     _tasks.add(Task(name:i.toString()));
     notifyListeners();
     }
+    check=true;
+  }
+  }else{
+    _tasks.add(Task(name:newtasktitle));
+    notifyListeners();
   }
   
       }catch(e){

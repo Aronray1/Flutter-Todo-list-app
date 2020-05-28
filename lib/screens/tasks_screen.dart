@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/screens/add_task.dart';
 import 'package:todo/widgets/tasks_list.dart';
 //import 'package:provider/provider.dart';
-import 'package:todo/models/task_data.dart';
+//import 'package:todo/models/task_data.dart';
 
 
 class TasksScreen extends StatefulWidget {
@@ -18,29 +18,10 @@ class _TasksScreenState extends State<TasksScreen> {
     super.initState();
     
   }
-  bool len=false;
- var k;
-
-  int showlength(){
-    
-    var length=Taskdata().taskcount;
-    setState(() {
-if(length==null){
-  length=0;
-
-}
-else{
-len=true;
-}
-    });
-    return length;
- 
-  }
-  
  
   
   Widget build(BuildContext context) {
-    k=showlength();
+    
     return Scaffold(
       backgroundColor: Colors.teal[400],
       floatingActionButton: FloatingActionButton(onPressed: (){
@@ -89,9 +70,8 @@ fontWeight: FontWeight.w700,
 ),
 ),
 
-
 Text(
-  '$k Tasks',
+  '12 Tasks',
 
   style:TextStyle(
 color:Colors.white,
