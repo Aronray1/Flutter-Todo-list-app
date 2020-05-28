@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:todo/models/task.dart';
 import 'dart:collection';
-
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -27,6 +27,7 @@ final task=Task(name: newtasktitle);
 }
 
  UnmodifiableListView<Task> get tasks {
+   Streamdata();
   return UnmodifiableListView(_tasks);
 }
 
@@ -47,3 +48,17 @@ void deletetask(Task task){
 
 }
 
+
+class Streamdata extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    
+  final brews=Provider.of<QuerySnapshot>(context);
+  for(var doc in brews.documents){
+    Taskdata().addtask(doc.data['title']);
+  
+  }
+     
+    return null;
+  }
+}
