@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/screens/add_task.dart';
 import 'package:todo/widgets/tasks_list.dart';
 //import 'package:provider/provider.dart';
-//import 'package:todo/models/task_data.dart';
+import 'package:todo/models/task_data.dart';
 
 
 class TasksScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   void initState(){
     super.initState();
-    
+    Taskdata().initdata();
   }
  
   

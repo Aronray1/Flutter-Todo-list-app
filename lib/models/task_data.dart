@@ -48,8 +48,12 @@ dblist=doc.data['list'];
 int get taskcount{
   return _tasks.length;
 }
+void initdata(){
+  addtask('');
+}
 
  UnmodifiableListView<Task> get tasks {
+   print('then i am called at 2 ');
   return UnmodifiableListView(_tasks);
 }
 
