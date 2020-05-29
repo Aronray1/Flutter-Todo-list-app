@@ -20,7 +20,6 @@ void addtask(String newtasktitle) async{
   try{
     DocumentSnapshot doc=await taskref.get();
 dblist=doc.data['list'];
-  
   if(dblist.contains(newtasktitle)==false){
       taskref.updateData(
 {
