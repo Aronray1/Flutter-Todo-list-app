@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:todo/models/task_data.dart';
 
  var taskcount=0;
+ var check=false;
 class TasksScreen extends StatefulWidget {
 
   @override
@@ -16,7 +17,7 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   void initState(){
     super.initState();
-     
+    
   }
 
   Widget build(BuildContext context) {
@@ -72,8 +73,28 @@ fontWeight: FontWeight.w700,
 ),
 
 Textcount(taskcount),
-]
+SizedBox(
+  height:10.0
+),
 
+  FlatButton(onPressed: () {
+    if(check==false){
+    Provider.of<Taskdata>(context).addtask('Hi there!');
+    check=true;
+    }
+  },
+   child: Text('View Tasks',
+   style:TextStyle(
+     color:Colors.teal[400],
+   )
+   ),
+   color:Colors.white,
+  
+  
+  )
+
+]
+ 
 )          
   ),
           Expanded(

@@ -58,10 +58,7 @@ void initdata(){
 }
 
  UnmodifiableListView<Task> get tasks {
-   if(init==false){
-     initdata();
-     init=true;
-   }
+   
   return UnmodifiableListView(_tasks);
 }
 
