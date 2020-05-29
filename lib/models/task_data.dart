@@ -11,6 +11,7 @@ final  taskref =Firestore.instance.collection('tasks').document('list');
 bool check =false;
 var count;
   List dblist;
+
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
 
@@ -20,10 +21,12 @@ void addtask(String newtasktitle) async{
   try{
     DocumentSnapshot doc=await taskref.get();
 dblist=doc.data['list'];
+
   if(dblist.contains(newtasktitle)==false){
       taskref.updateData(
 {
   'list':FieldValue.arrayUnion([newtasktitle]),
+  
 }
       );
   }
@@ -43,7 +46,6 @@ int get taskcount{
 void showdata()async{
   DocumentSnapshot doc=await taskref.get();
 dblist=doc.data['list'];
-
   for(var i in dblist){
     if(i!=null){
     if(_tasks.contains(Task(name:i))==false){
