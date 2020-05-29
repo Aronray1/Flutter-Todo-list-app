@@ -9,6 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 final  taskref =Firestore.instance.collection('tasks').document('list');
 bool check =false;
+var count;
   List dblist;
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
@@ -47,11 +48,13 @@ dblist=doc.data['list'];
                    // to this property according to it's updated value.
 }
 int get taskcount{
-  return _tasks.length;
+   count=_tasks.length;
+  notifyListeners();
+  return count;
 }
 bool init=false;
 void initdata(){
-  addtask('arjun');
+  addtask('');
 }
 
  UnmodifiableListView<Task> get tasks {
