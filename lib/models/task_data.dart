@@ -30,18 +30,10 @@ dblist=doc.data['list'];
       );
       
   }
-  if(check==false){
-  for(var i in dblist){
-    if(_tasks.contains(Task(name:i))==false){
-    _tasks.add(Task(name:i.toString()));
-    notifyListeners();
-    }
-    check=true;
-  }
-  }else{
+  
     _tasks.add(Task(name:newtasktitle));
     notifyListeners();
-  }
+  
   
       }catch(e){
      }   // we cant update the values without this function as it auto rebuild again the widgets who are listening
@@ -52,11 +44,22 @@ int get taskcount{
   notifyListeners();
   return count;
 }
-bool init=false;
-void initdata(){
-  addtask('');
-}
 
+void showdata()async{
+  DocumentSnapshot doc=await taskref.get();
+dblist=doc.data['list'];
+
+  for(var i in dblist){
+    if(i!=null){
+    if(_tasks.contains(Task(name:i))==false){
+    _tasks.add(Task(name:i.toString()));
+    notifyListeners();
+    }
+    }
+    
+  }
+  
+}
  UnmodifiableListView<Task> get tasks {
    
   return UnmodifiableListView(_tasks);

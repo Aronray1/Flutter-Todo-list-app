@@ -79,7 +79,8 @@ SizedBox(
 
   FlatButton(onPressed: () {
     if(check==false){
-    Provider.of<Taskdata>(context).addtask('Hi there!');
+    // Provider.of<Taskdata>(context).addtask('Hi there!');
+      Provider.of<Taskdata>(context).showdata();
     check=true;
     }
   },
