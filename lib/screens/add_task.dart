@@ -51,7 +51,7 @@ errorText: _validate?'Can\'t be Empty':null,
 textAlign: TextAlign.center,
 onChanged: (newtext){
   try{
-  if(newtext.length>0){
+  if(newtext.length>0 ){
   newTasktitle=newtext;
   }
   }catch(e){
@@ -69,12 +69,13 @@ onChanged: (newtext){
 setState(() {
   _text.text.isEmpty?_validate=true:_validate=false;
 });
-if(_validate==false){
-  try{
+try{
+if(_validate==false && newTasktitle!=null){
+  
 Provider.of<Taskdata>(context).addtask(newTasktitle);
 Navigator.pop(context);
-  }catch(e){print(e);}
-}
+  }
+}catch(e){print(e);}
   },
    child: Text('Add',
    style:TextStyle(
