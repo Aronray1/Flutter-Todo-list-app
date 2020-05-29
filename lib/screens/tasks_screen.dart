@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:todo/screens/add_task.dart';
 import 'package:todo/widgets/tasks_list.dart';
 //import 'package:provider/provider.dart';
-import 'package:todo/models/task_data.dart';
+//import 'package:todo/models/task_data.dart';
 
-
+ var taskcount=0;
 class TasksScreen extends StatefulWidget {
 
   @override
@@ -16,12 +16,14 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   void initState(){
     super.initState();
-    Taskdata().initdata();
+     
   }
- 
+
+
   
+   
   Widget build(BuildContext context) {
-    
+   // taskcountfun();
     return Scaffold(
       backgroundColor: Colors.teal[400],
       floatingActionButton: FloatingActionButton(onPressed: (){
@@ -70,15 +72,7 @@ fontWeight: FontWeight.w700,
 ),
 ),
 
-Text(
-  '12 Tasks',
-
-  style:TextStyle(
-color:Colors.white,
-fontSize:18.0
-
-  )
-),
+Textcount(taskcount),
 ]
 
 )          
@@ -102,6 +96,32 @@ fontSize:18.0
 
         ],
       ),
+    );
+  }
+}
+
+class Textcount extends StatelessWidget {
+ Textcount(this.count);
+ final int count;
+
+  @override
+  Widget build(BuildContext context) {
+    return     Text(
+    
+      '$count Tasks',
+    
+    
+    
+      style:TextStyle(
+    
+    color:Colors.white,
+    
+    fontSize:18.0
+    
+    
+    
+      )
+    
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:todo/models/task.dart';
+//import 'package:todo/screens/tasks_screen.dart';
 //import 'package:todo/widgets/tasks_list.dart';
 import 'dart:collection';
 //import 'package:provider/provider.dart';
@@ -48,12 +49,16 @@ dblist=doc.data['list'];
 int get taskcount{
   return _tasks.length;
 }
+bool init=false;
 void initdata(){
-  addtask('');
+  addtask('arjun');
 }
 
  UnmodifiableListView<Task> get tasks {
-   print('then i am called at 2 ');
+   if(init==false){
+     initdata();
+     init=true;
+   }
   return UnmodifiableListView(_tasks);
 }
 
