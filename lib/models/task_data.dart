@@ -26,19 +26,15 @@ dblist=doc.data['list'];
 {
   'list':FieldValue.arrayUnion([newtasktitle]),
 }
-
       );
-      
   }
-  
     _tasks.add(Task(name:newtasktitle));
     notifyListeners();
-  
-  
       }catch(e){
      }   // we cant update the values without this function as it auto rebuild again the widgets who are listening
-                   // to this property according to it's updated value.
+              // to this property according to it's updated value.
 }
+
 int get taskcount{
    count=_tasks.length;
   notifyListeners();
@@ -55,17 +51,13 @@ dblist=doc.data['list'];
     _tasks.add(Task(name:i.toString()));
     notifyListeners();
     }
-    }
-    
-  }
-  
+    } 
+  }  
 }
+
  UnmodifiableListView<Task> get tasks {
-   
   return UnmodifiableListView(_tasks);
 }
-
-
 
 void updateTask(Task task){
   task.toggleDone();
@@ -78,8 +70,6 @@ void deletetask(Task task){
   taskref.updateData({
     'list':FieldValue.arrayRemove([task.name]),
     });
- 
 }
-
 }
 
