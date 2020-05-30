@@ -110,6 +110,4 @@ print(deviceid1);
 check(deviceid1);
 
 }
-
-
 }
