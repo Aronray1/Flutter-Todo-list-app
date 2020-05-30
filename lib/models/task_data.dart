@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:todo/models/task.dart';
 //import 'package:todo/screens/tasks_screen.dart';
-//import 'package:todo/widgets/tasks_list.dart';
 import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,9 +12,7 @@ List dblist=['Hello, Hi there!'];
 String deviceid;
 String documentid;
 class Taskdata extends ChangeNotifier {
- List<Task> _tasks=[
-
-  ];
+ List<Task> _tasks=[];
   void check(var deviceid) async{
    
     try{ 
