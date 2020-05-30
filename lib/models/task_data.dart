@@ -6,10 +6,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_id/device_id.dart';
 
 
+class Taskdata extends ChangeNotifier {
 var count;
 List dblist=['Hello, Hi there!'];
-
-class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[];
  bool check1=false;
  String deviceid;
