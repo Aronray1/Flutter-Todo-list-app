@@ -27,6 +27,7 @@ dependencies:
   firebase_core: ^0.4.4+3
   cloud_firestore: ^0.13.5
   flutter_launcher_icons: ^0.7.5
+  device_id: ^0.2.0
   
 
 dev_dependencies:

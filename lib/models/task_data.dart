@@ -7,20 +7,21 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-final  taskref =Firestore.instance.collection('tasks').document('list');
 bool check =false;
 var count;
-  List dblist;
+List dblist;
+
 
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
 
   ];
- 
+
+final  taskref =Firestore.instance.collection('tasks').document('list');
 void addtask(String newtasktitle) async{
   try{
     DocumentSnapshot doc=await taskref.get();
-dblist=doc.data['list'];
+    dblist=doc.data['list'];
 
   if(dblist.contains(newtasktitle)==false){
       taskref.updateData(
@@ -72,5 +73,7 @@ void deletetask(Task task){
     'list':FieldValue.arrayRemove([task.name]),
     });
 }
+
+
 }
 
