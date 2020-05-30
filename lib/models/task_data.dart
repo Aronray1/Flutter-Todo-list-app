@@ -6,19 +6,52 @@ import 'dart:collection';
 //import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_id/device_id.dart';
 
-bool check =false;
+bool check1=false;
 var count;
-List dblist;
-
-
+List dblist=['Hello, Hi there!'];
+String deviceid;
+String documentid;
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[
 
   ];
+  void check(var deviceid) async{
+    //var _firestore=Firestore.instance.collection('tasks').document(deviceid);
+    try{ 
 
-final  taskref =Firestore.instance.collection('tasks').document('list');
+
+      await Firestore.instance.collection('tasks').getDocuments().then((QuerySnapshot snapshot){
+snapshot.documents.forEach((f){
+if(f.documentID==deviceid){
+  documentid=f.documentID;
+  check1=true;
+}
+
+});
+
+ });
+if(check1==false){
+  await Firestore.instance.collection('tasks').document(deviceid).setData({
+    'list':dblist,
+    'deviceid':deviceid,
+  });
+ 
+}
+
+ 
+
+
+
+    }
+    catch(e){}
+  }
+
+
 void addtask(String newtasktitle) async{
+  
+  final  taskref =Firestore.instance.collection('tasks').document(deviceid);
   try{
     DocumentSnapshot doc=await taskref.get();
     dblist=doc.data['list'];
@@ -44,11 +77,15 @@ int get taskcount{
   return count;
 }
 
-void showdata()async{
+void showdata() async{
+  
+  final  taskref =Firestore.instance.collection('tasks').document(deviceid);
   DocumentSnapshot doc=await taskref.get();
 dblist=doc.data['list'];
   for(var i in dblist){
     if(i!=null){
+      print('i am in null statement');
+      print(_tasks.contains(Task(name:i)));
     if(_tasks.contains(Task(name:i))==false){
     _tasks.add(Task(name:i.toString()));
     notifyListeners();
@@ -67,6 +104,7 @@ void updateTask(Task task){
 }
 
 void deletetask(Task task){
+  final  taskref =Firestore.instance.collection('tasks').document(deviceid);
   _tasks.remove(task);
    notifyListeners();
   taskref.updateData({
@@ -75,5 +113,16 @@ void deletetask(Task task){
 }
 
 
+Future<void> initdevice() async{
+
+String deviceid1;
+deviceid1=await DeviceId.getID;
+print('i am device id ');
+deviceid=deviceid1;
+print(deviceid1);
+check(deviceid1);
+
 }
 
+
+}

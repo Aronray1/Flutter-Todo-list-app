@@ -18,6 +18,8 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   void initState(){
     super.initState();
+   Taskdata().initdevice();
+   
   }
 
   Widget build(BuildContext context) {
