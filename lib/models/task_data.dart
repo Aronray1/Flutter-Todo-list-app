@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_id/device_id.dart';
 
-bool check1=false;
+
 var count;
 List dblist=['Hello, Hi there!'];
 String deviceid;
 String documentid;
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[];
+ bool check1=false;
   void check(var deviceid) async{
    
 try{ 
