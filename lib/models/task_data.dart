@@ -99,7 +99,6 @@ void deletetask(Task task){
     });
 }
 
-
 Future<void> initdevice() async{
 
 String deviceid1;
