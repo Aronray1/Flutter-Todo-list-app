@@ -8,11 +8,12 @@ import 'package:device_id/device_id.dart';
 
 var count;
 List dblist=['Hello, Hi there!'];
-String deviceid;
-String documentid;
+
 class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[];
  bool check1=false;
+ String deviceid;
+ String documentid;
   void check(var deviceid) async{
    
 try{ 
