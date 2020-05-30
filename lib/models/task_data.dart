@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:todo/models/task.dart';
-//import 'package:todo/screens/tasks_screen.dart';
 import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,7 +14,7 @@ class Taskdata extends ChangeNotifier {
  List<Task> _tasks=[];
   void check(var deviceid) async{
    
-    try{ 
+try{ 
 await Firestore.instance.collection('tasks').getDocuments().then((QuerySnapshot snapshot){
 snapshot.documents.forEach((f){
 if(f.documentID==deviceid){
@@ -33,11 +32,6 @@ if(check1==false){
   });
  
 }
-
- 
-
-
-
     }
     catch(e){}
   }
