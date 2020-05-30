@@ -72,7 +72,6 @@ void showdata() async{
 dblist=doc.data['list'];
   for(var i in dblist){
     if(i!=null){
-      print('i am in null statement');
       print(_tasks.contains(Task(name:i)));
     if(_tasks.contains(Task(name:i))==false){
     _tasks.add(Task(name:i.toString()));
