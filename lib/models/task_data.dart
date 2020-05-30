@@ -21,10 +21,9 @@ if(f.documentID==deviceid){
   documentid=f.documentID;
   check1=true;
 }
-
 });
-
  });
+
 if(check1==false){
   await Firestore.instance.collection('tasks').document(deviceid).setData({
     'list':dblist,
