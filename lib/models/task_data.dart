@@ -3,7 +3,6 @@ import 'package:todo/models/task.dart';
 //import 'package:todo/screens/tasks_screen.dart';
 //import 'package:todo/widgets/tasks_list.dart';
 import 'dart:collection';
-//import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_id/device_id.dart';
@@ -18,11 +17,9 @@ class Taskdata extends ChangeNotifier {
 
   ];
   void check(var deviceid) async{
-    //var _firestore=Firestore.instance.collection('tasks').document(deviceid);
+   
     try{ 
-
-
-      await Firestore.instance.collection('tasks').getDocuments().then((QuerySnapshot snapshot){
+await Firestore.instance.collection('tasks').getDocuments().then((QuerySnapshot snapshot){
 snapshot.documents.forEach((f){
 if(f.documentID==deviceid){
   documentid=f.documentID;
