@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:todo/models/task_data.dart';
 
 class TaskList extends StatelessWidget {
- 
   @override
   Widget build(BuildContext context) {
   
@@ -22,7 +21,7 @@ Scaffold.of(context).showSnackBar(
 SnackBar(content: Text('Deleted one task'))
 );
     },
-               );
+            );
       },
       itemCount: taskdata.taskcount,
       
