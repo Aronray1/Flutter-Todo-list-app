@@ -22,7 +22,6 @@ taskdata.deletetask(taskdata.tasks[index]);
 Scaffold.of(context).showSnackBar(
 SnackBar(content: Text('Deleted one task'))
 );
-
     },
                );
       },
