@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/models/task_data.dart';
 
-//final CollectionReference taskref =Firestore.instance.collection('tasks');
-
 class Addtaskscreen extends StatefulWidget {
   @override
   _AddtaskscreenState createState() => _AddtaskscreenState();
