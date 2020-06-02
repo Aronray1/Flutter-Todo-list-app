@@ -54,9 +54,7 @@ onChanged: (newtext){
   }catch(e){
         print(e);
   }
-  
 },
- 
   ),
   SizedBox(
     height:10.0
@@ -83,14 +81,7 @@ Navigator.pop(context);
   
   
   )
-
-
-
-
   ],
-
-
-
 )
 
    )
