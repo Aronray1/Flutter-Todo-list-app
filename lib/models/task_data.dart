@@ -35,7 +35,6 @@ if(check1==false){
     catch(e){}
   }
 
-
 void addtask(String newtasktitle) async{
   
   final  taskref =Firestore.instance.collection('tasks').document(deviceid);
