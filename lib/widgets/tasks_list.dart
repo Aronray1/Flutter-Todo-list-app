@@ -25,8 +25,6 @@ SnackBar(content: Text('Deleted one task'))
 
     },
                );
-
-
       },
       itemCount: taskdata.taskcount,
       
