@@ -61,7 +61,6 @@ radius:30.0,
 
 SizedBox(
 height:10.0,
-
 ),
 Text('Todo',
 style: TextStyle(
