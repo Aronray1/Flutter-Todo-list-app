@@ -38,9 +38,7 @@ class _TasksScreenState extends State<TasksScreen> {
         ))
         
       )
-      
       );
-      
       },
       backgroundColor:Colors.teal[400] ,
       child:Icon(Icons.add)
