@@ -68,7 +68,6 @@ fontSize: 50.0,
 fontWeight: FontWeight.w700,
 ),
 ),
-
 Textcount(taskcount),
 SizedBox(
   height:10.0
