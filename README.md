@@ -1,4 +1,4 @@
-# Flutter Todo App
+# Flutter To-do App
 
 ### Features list.
 - Add tasks.
